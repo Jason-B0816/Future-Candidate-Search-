@@ -110,8 +110,8 @@ const CandidateSearch = () => {
       )}
 
       {/* Candidate Actions */}
-      <button onClick={saveCandidate} disabled={loading ? true : false}>➕ Save</button>
-      <button onClick={skipCandidate} disabled={loading ? true : false}>➖ Skip</button>
+      <button onClick={saveCandidate} disabled={loading}>➕ Save</button>
+      <button onClick={skipCandidate} disabled={loading}>➖ Skip</button>
     </div>
   );
 };
