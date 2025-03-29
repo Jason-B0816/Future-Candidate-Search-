@@ -17,7 +17,8 @@ const CandidateSearch = () => {
     setError(null);
 
     try {
-      const data = await searchGithubUser('example-username'); // Replace 'example-username' with a valid username
+      const data = await searchGithubUser(candidates[0].login); // Replace 'example-username' with a valid username
+      console.log(data); // Log the data to see the structure
       setCandidate(data);
     } catch (err) {
       setError('Failed to fetch candidate. Try again later.');
@@ -29,18 +30,19 @@ const CandidateSearch = () => {
 
   useEffect(() => {
     fetchCandidate();
-  }, []);
+  }, [candidates]); // Fetch candidate whenever candidates list changes
 
   // Fetch candidates based on search input
   const fetchCandidates = async () => {
-    if (!searchTerm.trim()) return;
+   
     
     setLoading(true);
     setError(null);
 
     try {
       const data = await searchGithub();
-      setCandidates(data.items || []);
+      setCandidates(data ); // Set the candidates based on the search results);
+     
     } catch (err) {
       setError('Failed to search candidates.');
       console.error(err);
@@ -81,7 +83,7 @@ const CandidateSearch = () => {
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {/* Display Search Results */}
-      {candidates.length > 0 && (
+      {/* {candidates.length > 0 && (
         <div>
           <h2>Search Results</h2>
           {candidates.map((user) => (
@@ -92,7 +94,7 @@ const CandidateSearch = () => {
             </div>
           ))}
         </div>
-      )}
+      )} */}
 
       {/* Display Current Candidate */}
       {candidate && (
