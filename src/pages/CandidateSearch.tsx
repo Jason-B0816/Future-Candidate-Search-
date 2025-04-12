@@ -21,7 +21,7 @@ const CandidateSearch = () => {
       console.log(data); // Log the data to see the structure
       setCandidate(data);
     } catch (err) {
-      setError('Failed to fetch candidate. Try again later.');
+      setError('No more candidates are available. Try again later.');
       console.error(err);
     } finally {
       setLoading(false);
