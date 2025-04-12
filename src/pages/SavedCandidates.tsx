@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { IoRemoveCircle } from 'react-icons/io5';
 
 const SavedCandidates: React.FC = () => {
   // Define the Candidate interface to ensure type safety
@@ -36,14 +37,14 @@ const SavedCandidates: React.FC = () => {
 <table>
         <thead>
           <tr>
-            <th>Avatar</th>
+            <th>Image</th>
             <th>Name</th>
             <th>Username</th>
             <th>Location</th>
             <th>Email</th>
             <th>Company</th>
             <th>GitHub Profile</th>
-            <th>Actions</th>
+            <th>Reject</th>
           </tr>
         </thead>
         <tbody>
@@ -56,7 +57,12 @@ const SavedCandidates: React.FC = () => {
               <td>{candidate.email || 'Not Available'}</td>
               <td>{candidate.company || 'Not Available'}</td>
               <td><a href={candidate.html_url} target="_blank" rel="noopener noreferrer">GitHub Profile</a></td>
-              <td><button onClick={() => deleteCandidate(candidate.id)}>🗑️ Delete</button></td>
+              <td>
+                <button onClick={() => deleteCandidate(candidate.id)}>
+                  <IoRemoveCircle style={{ fontSize: '50px', cursor: 'pointer', color: 'rgb(255, 0, 0)' }} />
+                </button>
+              </td>
+              
             </tr>
           ))}
         </tbody>
