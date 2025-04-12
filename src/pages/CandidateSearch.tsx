@@ -7,8 +7,7 @@ const CandidateSearch = () => {
   const [candidate, setCandidate] = useState<{ avatar_url: string; name?: string; login: string; location?: string; email?: string; company?: string; html_url: string } | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [savedCandidates, setSavedCandidates] = useState(() => {
+    const [savedCandidates, setSavedCandidates] = useState(() => {
     return JSON.parse(localStorage.getItem('savedCandidates') || '[]') || [];
   });
 
