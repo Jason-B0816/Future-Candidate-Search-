@@ -58,27 +58,27 @@ const CandidateSearch = () => {
       const updatedList = [...savedCandidates, candidate];
       setSavedCandidates(updatedList);
       localStorage.setItem('savedCandidates', JSON.stringify(updatedList));
-      fetchCandidate();
+      fetchCandidates();
     }
   };
 
   // Skip candidate without saving
   const skipCandidate = () => {
-    fetchCandidate();
+    fetchCandidates();
   };
 
   return (
     <div>
       <h1>CandidateSearch</h1>
 
-      {/* Search Input */}
+      {/* Search Input
       <input
         type="text"
         placeholder="Search candidates..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button onClick={fetchCandidates} disabled={loading}>🔍 Search</button>
+      <button onClick={fetchCandidates} disabled={loading}>🔍 Search</button> */}
 
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -111,11 +111,11 @@ const CandidateSearch = () => {
       )}
 
       {/* Candidate Actions */}
-      <button onClick={saveCandidate} disabled={loading}>➕ Save</button>
-      <IoRemoveCircle  style={{ fontSize: '50px', cursor: 'pointer', color: 'rgb(0, 255, 123)'}} onClick={() => saveCandidate?.()} />
-      <button onClick={skipCandidate} disabled={loading}>➖ Skip</button>
-      <IoAddCircle style={{ fontSize: '50px', cursor: 'pointer', color: 'rgb(255, 0, 0)'}} onClick={() => skipCandidate?.()} /> 
+     <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+      <IoRemoveCircle  style={{ fontSize: '50px', cursor: 'pointer', color: 'rgb(255, 0, 0)'}} onClick={() => skipCandidate?.()} />
       
+      <IoAddCircle style={{ fontSize: '50px', cursor: 'pointer', color: 'rgb(0, 255, 120)'}} onClick={() => saveCandidate?.()} /> 
+      </div>
     </div>
   );
 };

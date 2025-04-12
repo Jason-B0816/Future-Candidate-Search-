@@ -33,27 +33,36 @@ const SavedCandidates: React.FC = () => {
   return (
     <div>
       <h1>Potential Candidates</h1>
+<table>
+        <thead>
+          <tr>
+            <th>Avatar</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Location</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>GitHub Profile</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {savedCandidates.map((candidate) => (
+            <tr key={candidate.id}>
+              <td><img src={candidate.avatar_url} alt={`${candidate.name || 'Candidate'}'s avatar`} width="50" /></td>
+              <td>{candidate.name || 'No Name Provided'}</td>
+              <td>{candidate.login}</td>
+              <td>{candidate.location || 'Not Available'}</td>
+              <td>{candidate.email || 'Not Available'}</td>
+              <td>{candidate.company || 'Not Available'}</td>
+              <td><a href={candidate.html_url} target="_blank" rel="noopener noreferrer">GitHub Profile</a></td>
+              <td><button onClick={() => deleteCandidate(candidate.id)}>🗑️ Delete</button></td>
+            </tr>
+          ))}
+        </tbody>
 
-      {/* If no candidates are saved, show a message */}
-      {savedCandidates.length === 0 ? (
-        <p>No candidates have been accepted.</p>
-      ) : (
-        // List the saved candidates
-        savedCandidates.map((candidate) => (
-          <div key={candidate.id} style={{ border: '1px solid #ccc', padding: '16px', margin: '16px' }}>
-            <img src={candidate.avatar_url} alt={`${candidate.name || 'Candidate'}'s avatar`} width="100" />
-            <h2>{candidate.name || 'No Name Provided'}</h2>
-            <p><strong>Username:</strong> {candidate.login}</p>
-            <p><strong>Location:</strong> {candidate.location || 'Not Available'}</p>
-            <p><strong>Email:</strong> {candidate.email || 'Not Available'}</p>
-            <p><strong>Company:</strong> {candidate.company || 'Not Available'}</p>
-            <p><a href={candidate.html_url} target="_blank" rel="noopener noreferrer">GitHub Profile</a></p>
-
-            {/* Delete Button */}
-            <button onClick={() => deleteCandidate(candidate.id)}>🗑️ Delete</button>
-          </div>
-        ))
-      )}
+</table>
+   
     </div>
   );
 };
