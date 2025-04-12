@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { searchGithub, searchGithubUser } from '../api/API';
+import { IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
 
 const CandidateSearch = () => {
   const [candidates, setCandidates] = useState<{ id: number; avatar_url: string; login: string; html_url: string }[]>([]);
@@ -111,7 +112,10 @@ const CandidateSearch = () => {
 
       {/* Candidate Actions */}
       <button onClick={saveCandidate} disabled={loading}>➕ Save</button>
+      <IoRemoveCircle  style={{ fontSize: '50px', cursor: 'pointer', color: 'rgb(0, 255, 123)'}} onClick={() => saveCandidate?.()} />
       <button onClick={skipCandidate} disabled={loading}>➖ Skip</button>
+      <IoAddCircle style={{ fontSize: '50px', cursor: 'pointer', color: 'rgb(255, 0, 0)'}} onClick={() => skipCandidate?.()} /> 
+      
     </div>
   );
 };

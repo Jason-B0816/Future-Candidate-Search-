@@ -94,12 +94,12 @@ const CandidateSearch = () => {
           <p><a href={candidate.html_url} target="_blank" rel="noopener noreferrer">GitHub Profile</a></p>
         </div>)}
 
-        {/* Action Buttons */}
+        {/* Candidate Action */}
        <button onClick={saveCandidate} disabled={loading}>➕ Save</button>
-      <IoRemoveCircle  style={{ fontSize: '50px', cursor: 'pointer', color: 'rgb(255, 0, 0)'}} onClick={() => rejectCandidate?.()} />
+      <IoRemoveCircle  style={{ fontSize: '50px', cursor: 'pointer', color: 'rgb(0, 255, 123)'}} onClick={() => saveCandidate?.()} />
       <button onClick={skipCandidate} disabled={loading}>➖ Skip</button>
-      <IoAddCircle style={{ fontSize: '50px', cursor: 'pointer', color: 'rgb(0, 255, 123)'}} onClick={() => addToCandidates?.()} /> 
-
+      <IoAddCircle style={{ fontSize: '50px', cursor: 'pointer', color: 'rgb(255, 0, 0), 255, 123)'}} onClick={() => skipCandidate?.()} /> 
+rgb(0, 255, 123)
     </div>);
 };
 export default CandidateSearch;
